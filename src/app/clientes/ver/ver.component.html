@@ -1,0 +1,90 @@
+<!--begin::Main-->
+<app-header-mobile></app-header-mobile>
+<div class="d-flex flex-column flex-root" >
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper " id="kt_wrapper" >
+      <!--begin::header-->
+        <app-header></app-header>
+      <!--end::header-->
+      <!--begin::Content-->
+    <br>
+      <div class="content d-flex flex-column flex-column-fluid"  id="kt_content" style="height:490px;width:100%;overflow-y:auto;" >
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid" >
+          <!--begin::Container-->
+          <div class="container" >
+            <!--begin::Row-->
+            <div class="row">
+                <!--begin::col-xl-4-->
+              <div class="col-xl-12">
+                <!--begin::contenido-->
+                <div class="card card-custom gutter-b card-stretch">
+<div class="container">
+  <div class="card">
+    <div class="card-header font-weight-bold">
+      Listado de clientes
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" type="button" [routerLink]="['/cliente/crear']" >Crear cliente</button>
+          </div>
+    </div>
+    <div class="card-body">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr >
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Rfc</th>
+      <th scope="col">Razon Social</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.nombre }}</td>
+         <td>{{ cliente.email }}</td>
+         <td>{{ cliente.rfc }}</td>
+         <td>{{ cliente.razonSocial }}</td>
+        <td><div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      opciones
+      </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <button class="dropdown-item" type="button" [routerLink]="['/cliente/editar', cliente.id]">Editar</button>
+          <button class="dropdown-item" type="button" (click)='delete(cliente)'>Eliminar</button>
+          <!--<button class="dropdown-item" type="button">Something else here</button>-->
+        </div>
+      </div>
+    </td>
+    </tr>
+
+  </tbody>
+</table>
+    </div>
+  </div>
+  </div>
+</div>
+<!--end::contenido-->
+</div>
+<!--end::col-xl-4-->
+</div>
+<!--end::Dashboard-->
+</div>
+<!--end::Container-->
+</div>
+<!--end::Entry-->
+</div>
+<!--end::Content-->
+<app-footer></app-footer>
+</div>
+<!--end::Wrapper-->
+</div>
+<!--end::Page-->
+</div>
+<!--end::Main-->
+<!--begin::Panel-->
+<!--<app-panel></app-panel>-->
+<!--end::panel-->

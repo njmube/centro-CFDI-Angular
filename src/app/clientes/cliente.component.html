@@ -1,0 +1,145 @@
+<!--begin::Main-->
+<app-header-mobile></app-header-mobile>
+<div class="d-flex flex-column flex-root" >
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper " id="kt_wrapper" >
+      <!--begin::header-->
+        <app-header></app-header>
+      <!--end::header-->
+      <!--begin::Content-->
+    <br>
+      <div class="content d-flex flex-column flex-column-fluid"  id="kt_content" style="height:490px;width:100%;overflow-y:auto;" >
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid" >
+          <!--begin::Container-->
+          <div class="container" >
+            <!--begin::Row-->
+            <div class="row">
+                <!--begin::col-xl-4-->
+              <div class="col-xl-12">
+                <!--begin::contenido-->
+                <div class="card card-custom gutter-b card-stretch">
+
+<div class="container">
+  <div class="card">
+    <div class="card-header font-weight-bold">
+      Nuevo cliente
+    </div>
+    <div class="card-body">
+      <form  (ngSubmit)="create()" enctype="multipart/form-data" >
+          <div class="form-row">
+            <div class="form-group col-md-4" >
+              <label for="nombre">Nombre</label>
+              <input [(ngModel)]="cliente.nombre" type="text" class="form-control" placeholder="Nombre" name="nombre" required #nombre="ngModel" [ngModelOptions]="{standalone: true}">
+              <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched || nombre.untouched)">
+              <span class="text-danger font-weight-bold small" *ngIf="nombre.errors.required">
+                (Nombre es requerido)
+              </span>
+            </div>
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="email">Email</label>
+              <input [(ngModel)]="cliente.email" type="email" class="form-control"  placeholder="Email"  [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group col-md-4" >
+              <label for="razonSocial" >Razon social</label>
+              <input [(ngModel)]="cliente.razonSocial" type="tetx" class="form-control" placeholder="Razon social" name="razon"  required #razonSocial="ngModel" [ngModelOptions]="{standalone: true}">
+              <div *ngIf="razonSocial.invalid && (razonSocial.dirty || razonSocial.touched || razonSocial.untouched)">
+              <span class="text-danger font-weight-bold small" *ngIf="razonSocial.errors.required">
+                (Razon social es requerido)
+              </span>
+            </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="rfc">Rfc</label>
+              <input [(ngModel)]="cliente.rfc" type="text" class="form-control"  placeholder="Rfc" name="rfc"  required #rfc="ngModel" [ngModelOptions]="{standalone: true}">
+              <div *ngIf="rfc.invalid && (rfc.dirty || rfc.touched || rfc.untouched)">
+              <span class="text-danger font-weight-bold small" *ngIf="rfc.errors.required">
+                (Rfc es requerido)
+              </span>
+            </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="codigoPostal">Codigo postal</label>
+              <input [(ngModel)]="cliente.codigoPostal" type="text" class="form-control" placeholder="Codigo postal"   required pattern="[0-9]*" #codigoPostal="ngModel" [ngModelOptions]="{standalone: true}">
+              <div *ngIf="codigoPostal.invalid && (codigoPostal.dirty || codigoPostal.touched || codigoPostal.untouched)">
+              <div class="text-danger font-weight-bold small" *ngIf="codigoPostal.errors.required">
+                (Codigo postal es requerido)
+              </div>
+              <div class="text-danger font-weight-bold small" *ngIf="codigoPostal.errors.pattern">
+                (solo numeros)
+              </div>
+            </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="pais">País</label>
+            <select class="browser-default custom-select" [(ngModel)]="cliente.pais"  name="pais" required #pais="ngModel" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let pais of paises" [value]="pais.value">{{pais.text}}</option>
+            </select>
+            <div *ngIf="pais.invalid && (pais.dirty || pais.touched || pais.untouched)">
+            <div class="text-danger font-weight-bold small" *ngIf="pais.errors.required">
+              (País es requerido)
+            </div>
+            </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="archivoCer">Archivo Cer</label>
+            <input (change)="seleccionaCer($event)"  type="file" class="form-control-file" accept=".cer" >
+          </div>
+          <div class="form-group col-md-4">
+            <label for="archivoKey">Archivo Key</label>
+            <input (change)="seleccionaKey($event)" type="file" class="form-control-file" accept=".key" >
+          </div>
+          <div class="form-group col-md-4">
+            <label for="logo">Logo</label>
+            <input (change)="seleccionaLogo($event)" name="logo"  type="file" class="form-control-file" accept="image/*">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="passwordKey">Password key</label>
+            <input [(ngModel)]="cliente.passwordKey" type="password" class="form-control"  placeholder="Password key" [ngModelOptions]="{standalone: true}">
+          </div>
+          </div>
+          <hr>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="servidor">Servidor</label>
+              <input [(ngModel)]="cliente.servidor" type="text" class="form-control" placeholder="Servidor" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="key">Key</label>
+              <input [(ngModel)]="cliente.keyXsa" type="text" class="form-control" placeholder="Key" [ngModelOptions]="{standalone: true}">
+            </div>
+            </div>
+            <button  role="button" class="btn btn-primary float-right" formnovalidate >Guardar</button>
+        </form>
+          </div>
+    </div>
+    </div>
+  </div>
+  <!--end::contenido-->
+  </div>
+  <!--end::col-xl-4-->
+</div>
+<!--end::Dashboard-->
+</div>
+<!--end::Container-->
+</div>
+<!--end::Entry-->
+</div>
+<!--end::Content-->
+<app-footer></app-footer>
+</div>
+<!--end::Wrapper-->
+</div>
+<!--end::Page-->
+</div>
+<!--end::Main-->
+<!--begin::Panel-->
+<!--<app-panel></app-panel>-->
+<!--end::panel-->

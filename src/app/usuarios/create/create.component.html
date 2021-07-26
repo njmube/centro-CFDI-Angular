@@ -1,0 +1,214 @@
+<div  *ngIf="validExistTokeAndUser()">
+  <!--begin::Main-->
+  <app-header-mobile></app-header-mobile>
+  <div class="d-flex flex-column flex-root" >
+    <!--begin::Page-->
+    <div class="d-flex flex-row flex-column-fluid page">
+      <!--begin::Wrapper-->
+      <div class="d-flex flex-column flex-row-fluid wrapper " id="kt_wrapper" >
+        <!--begin::header-->
+          <app-header></app-header>
+        <!--end::header-->
+        <!--begin::Content-->
+      <br>
+        <div class="content d-flex flex-column flex-column-fluid"  id="kt_content" style="height:490px;width:100%;overflow-y:auto;" >
+          <!--begin::Entry-->
+          <div class="d-flex flex-column-fluid" >
+            <!--begin::Container-->
+            <div class="container" >
+              <!--begin::Row-->
+              <div class="row">
+                  <!--begin::col-xl-4-->
+                <div class="col-xl-12">
+                  <!--begin::contenido-->
+                  <div class="card card-custom gutter-b card-stretch">
+  <div class="container" >
+  <div class="card">
+    <div class="card-header">
+      Registro de usuario
+    </div>
+    <div class="card-body">
+      <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+        <li *ngFor="let error of errores">
+          {{error}}
+        </li>
+      </ul>
+      <form  (ngSubmit)="create()">
+      <div class="form-group row">
+          <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre">
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuario.apellidos" name="apelldios">
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="email" class="col-form-label col-sm-2">Email</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email">
+          </div>
+      </div>
+      <div class="form-group row">
+          <label for="username" class="col-form-label col-sm-2">Username</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control " [(ngModel)]="usuario.username" name="username">
+          </div>
+            <label for="rol" class="col-form-label col-sm-1">Rol</label>
+            <div class="col-sm-2">
+           <select id="role" class="form-control" [(ngModel)]="role" (ngModelChange)='onSelectRol()' [ngModelOptions]="{standalone: true}">
+              <option [ngValue]="undefined" >--selecciona--</option>
+              <option *ngFor="let rol of roles" [ngValue]="rol" >{{rol.nombre}}</option>
+            </select>
+            </div>
+      </div>
+      <div class="form-group row">
+          <label for="password" class="col-form-label col-sm-2">Password</label>
+          <div class="col-sm-6">
+            <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password">
+          </div>
+      </div>
+      <div *ngIf="activeCheck">
+      <div class="form-group row" >
+      <div class="col-sm-2">Empresas</div>
+      <div class="col-sm-10">
+        <div class="form-check form-check-inline" *ngFor="let cliente of clientes" >
+          <input class="form-check-input" type="checkbox" [(ngModel)]="cliente.isChecked"  (change)="onCheckboxCliente()"   value=cliente.id [ngModelOptions]="{standalone: true}">
+          <label class="form-check-label" for="gridCheck1">{{cliente.nombre}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+    <div class="col-sm-2">Tipo comprobante</div>
+    <div class="col-sm-10">
+      <div class="form-check form-check-inline" *ngFor="let tipo of tComprobante" >
+        <input class="form-check-input" type="checkbox" [(ngModel)]="tipo.isChecked" (change)="onCheckboxTipo()" value=tipo.value [ngModelOptions]="{standalone: true}">
+        <label class="form-check-label" for="gridCheck1">{{tipo.text}}</label>
+      </div>
+    </div>
+  </div>
+  </div>
+
+      <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button">crear</button>
+            </div>
+      </div>
+      </form>
+  </div>
+  </div>
+</div>
+<!--end::contenido-->
+</div>
+<!--end::col-xl-4-->
+</div>
+<!--end::Dashboard-->
+</div>
+<!--end::Container-->
+</div>
+<!--end::Entry-->
+</div>
+</div>
+<!--end::Content-->
+<app-footer></app-footer>
+
+<!--end::Wrapper-->
+</div>
+<!--end::Page-->
+</div>
+<!--end::Main-->
+
+</div>
+<!--begin::Panel-->
+<app-panel></app-panel>
+<!--end::panel-->
+</div>
+<div class="" *ngIf="!validExistTokeAndUser()">
+<br><br><br>
+<div class="container" >
+<div class="card">
+  <div class="card-header">
+    Registro de usuario
+  </div>
+  <div class="card-body">
+    <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+      <li *ngFor="let error of errores">
+        {{error}}
+      </li>
+    </ul>
+    <form  (ngSubmit)="create()">
+    <div class="form-group row">
+        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="usuario.apellidos" name="apelldios">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="email" class="col-form-label col-sm-2">Email</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="username" class="col-form-label col-sm-2">Username</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control " [(ngModel)]="usuario.username" name="username">
+        </div>
+          <label for="rol" class="col-form-label col-sm-1">Rol</label>
+          <div class="col-sm-2">
+         <select id="role" class="form-control" [(ngModel)]="role" (ngModelChange)='onSelectRol()' [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="undefined" >--selecciona--</option>
+            <option *ngFor="let rol of roles" [ngValue]="rol" >{{rol.nombre}}</option>
+          </select>
+          </div>
+    </div>
+    <div class="form-group row">
+        <label for="password" class="col-form-label col-sm-2">Password</label>
+        <div class="col-sm-6">
+          <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password">
+        </div>
+    </div>
+    <div *ngIf="activeCheck">
+    <div class="form-group row" >
+    <div class="col-sm-2">Empresas</div>
+    <div class="col-sm-10">
+      <div class="form-check form-check-inline" *ngFor="let cliente of clientes" >
+        <input class="form-check-input" type="checkbox" [(ngModel)]="cliente.isChecked"  (change)="onCheckboxCliente()"   value=cliente.id [ngModelOptions]="{standalone: true}">
+        <label class="form-check-label" for="gridCheck1">{{cliente.nombre}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+  <div class="col-sm-2">Tipo comprobante</div>
+  <div class="col-sm-10">
+    <div class="form-check form-check-inline" *ngFor="let tipo of tComprobante" >
+      <input class="form-check-input" type="checkbox" [(ngModel)]="tipo.isChecked" (change)="onCheckboxTipo()" value=tipo.value [ngModelOptions]="{standalone: true}">
+      <label class="form-check-label" for="gridCheck1">{{tipo.text}}</label>
+    </div>
+  </div>
+</div>
+</div>
+
+    <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button">crear</button>
+          </div>
+    </div>
+    </form>
+</div>
+</div>
+</div>
+</div>

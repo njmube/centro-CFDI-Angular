@@ -1,0 +1,27 @@
+/*.dropdown-menu logout{
+  width: 3px;
+}
+*/
+/*.menu-nav li a:hover{
+  background: silver;
+  color: white;
+  border-radius: 5px;
+}*/
+/*
+.menu-nav li a{
+  color: black;
+  border-radius: 5px;
+}
+*/
+ul li a:hover{
+  color:white;
+  background-color: white;
+}
+a{
+  color: white;
+}
+
+.active {
+color:black;
+background-color: white;
+}

@@ -1,0 +1,76 @@
+<!--begin::Main-->
+<app-header-mobile></app-header-mobile>
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper " id="kt_wrapper" >
+      <!--begin::header-->
+        <app-header></app-header>
+      <!--end::header-->
+      <!--begin::Content-->
+      <br>
+        <div class="content d-flex flex-column flex-column-fluid"  id="kt_content" style="height:490px;width:100%;overflow-y:auto;" >
+          <!--begin::Entry-->
+          <div class="d-flex flex-column-fluid" >
+            <!--begin::Container-->
+            <div class="container" >
+              <!--begin::Row-->
+              <div class="row">
+                  <!--begin::col-xl-4-->
+                <div class="col-xl-12">
+                  <!--begin::contenido-->
+                  <div class="card card-custom gutter-b card-stretch">
+                    <div class="card">
+                      <div class="card-header font-weight-bold">
+                        Estadisticas de Facturación
+                      </div>
+                        <div class="card-body">
+                          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                      <thead>
+                        <tr >
+                          <th scope="col">Empresas</th>
+                          <th scope="col">Ingreso</th>
+                          <th scope="col">Egreso</th>
+                          <th scope="col">Traslado</th>
+                          <th scope="col">Nomina</th>
+                          <th scope="col">Pago</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let estadistica of estadisticas">
+                          <td>{{ estadistica.cliente }}</td>
+                             <td>{{ estadistica.ingreso }}</td>
+                             <td>{{ estadistica.egreso }}</td>
+                             <td>{{ estadistica.traslado}}</td>
+							 <td>{{ estadistica.nomina}}</td>
+							 <td>{{ estadistica.pago}}</td>
+							 <td>{{ estadistica.total}}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                        </div>
+                      </div>
+
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!--end::Content-->
+        <!--begin::footer-->
+        <app-footer></app-footer>
+        <!--end::footer-->
+          </div>
+          <!--end::Wrapper-->
+      </div>
+			<!--end::Page-->
+</div>
+<!--end::Main-->
+<!--begin::Panel-->
+<!--<app-panel></app-panel>-->
+<!--end::panel-->

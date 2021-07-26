@@ -1,0 +1,63 @@
+<!--begin::Main-->
+<app-header-mobile></app-header-mobile>
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper " id="kt_wrapper" >
+      <!--begin::header-->
+        <app-header></app-header>
+      <!--end::header-->
+      <!--begin::Content-->
+    <br>
+      <div class="content d-flex flex-column flex-column-fluid"  id="kt_content" style="height:490px;width:100%;overflow-y:auto;" >
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid" >
+          <!--begin::Container-->
+          <div class="container" >
+            <!--begin::Row-->
+            <div class="row">
+                <!--begin::col-xl-4-->
+              <div class="col-xl-12">
+                <!--begin::contenido-->
+                <div class="card card-custom gutter-b card-stretch">
+
+
+    <div class="container" >
+      <div class="card">
+      <div class="card-header" >
+					<span class="navbar-brand">Descarga Masiva de CFDIs</span>
+          <select class="custom-select" [(ngModel)]="formCiecc" [ngModelOptions]="{standalone: true}">
+            <option [ngValue]="undefined">--selecciona--</option>
+            <option value="ciec">CIEC con Captcha</option>
+            <option value="fiel">FIEL</option>
+          </select>
+			</div>
+
+
+
+  </div>
+
+</div>
+
+                    </div>
+                    <!--end::contenido-->
+                    </div>
+                    <!--end::col-xl-4-->
+                  </div>
+                <!--end::Dashboard-->
+                </div>
+                <!--end::Container-->
+              </div>
+              <!--end::Entry-->
+      </div>
+      <!--end::Content-->
+        <!--begin::footer-->
+        <app-footer></app-footer>
+        <!--end::footer-->
+          </div>
+          <!--end::Wrapper-->
+      </div>
+			<!--end::Page-->
+</div>
+<!--end::Main-->

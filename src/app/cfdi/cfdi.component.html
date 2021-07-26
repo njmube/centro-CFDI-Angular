@@ -1,0 +1,126 @@
+<!--begin::Main-->
+<app-header-mobile></app-header-mobile>
+<div class="d-flex flex-column flex-root">
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper " id="kt_wrapper" >
+      <!--begin::header-->
+        <app-header></app-header>
+      <!--end::header-->
+      <!--begin::Content-->
+    <br>
+      <div class="content d-flex flex-column flex-column-fluid"  id="kt_content" style="height:490px;width:100%;overflow-y:auto;" >
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid" >
+          <!--begin::Container-->
+          <div class="container" >
+            <!--begin::Row-->
+            <div class="row">
+                <!--begin::col-xl-4-->
+              <div class="col-xl-12">
+                <!--begin::contenido-->
+                <div class="card card-custom gutter-b card-stretch">
+
+
+    <div class="container" >
+      <div class="card">
+      <div class="card-header" >
+      <form (submit)="filterByInput()">
+      <div class="form-row">
+      <div class="form-group col-md-2" >
+      <label> Fecha inicial </label>
+        <input type="date" name="inicial" id="inicial" [(ngModel)]="params.fechaInicial" class="form-control" [ngModelOptions]="{standalone: true}"/>
+      </div>
+      <div class="form-group col-md-2" >
+      <label>Fecha final</label>
+        <input type="date" name="final" id="final" [(ngModel)]="params.fechaFinal" class="form-control" [ngModelOptions]="{standalone: true}"/>
+      </div>
+      <div class="form-group col-md-2" >
+         <label >Empresas</label>
+         <select  class="browser-default custom-select" id="clienteId" [(ngModel)]="params.clienteId" [ngModelOptions]="{standalone: true}" >
+          <option [ngValue]="undefined">--selecciona--</option>
+          <option [ngValue]="undefined">Todo</option>
+           <option *ngFor="let cliente of clientes" [value]="cliente.id">{{cliente.nombre}}</option>
+         </select>
+      </div>
+      <div class="form-group col-md-2" >
+           <label >Tipo comprobante </label>
+           <select  class="browser-default custom-select" id="comprobante" [(ngModel)]="params.tipoComprobante" [ngModelOptions]="{standalone: true}" >
+            <option [ngValue]="undefined">--selecciona--</option>
+            <option [ngValue]="undefined">Todo</option>
+             <option *ngFor="let tipo of comprobantes" [value]="tipo.nombre">{{tipo.descripcion}}</option>
+           </select>
+      </div>
+      <div class="form-group col-md-2" >
+        <button class="btn btn-primary" type="submit">Filter</button>
+        </div>
+    </div>
+  </form>
+  </div>
+  <div class="card-body">
+  <button type="button" name="button" class="btn btn-primary" (click)=" downloadZipAll(params)">Descargar Todo
+   <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+   </button>
+  <table datatable [dtOptions]="dtOptions" id="tableCfdi"class="table table-sm table-bordered " >
+    <thead>
+      <tr>
+        <th >Razon social</th>
+        <th>Rfc</th>
+        <th>Uuid</th>
+        <th>Serie</th>
+        <th>Folio</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th colspan="2" >Descarga de archivos</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="dataCfdi?.length != 0">
+      <tr *ngFor="let cfdi of dataCfdi"  >
+        <td >{{ cfdi.razonSocial }}</td>
+        <td >{{ cfdi.rfc }}</td>
+        <td >{{ cfdi.uuid }}</td>
+        <td >{{ cfdi.serie }}</td>
+        <td >{{ cfdi.folio }}</td>
+        <td >{{ cfdi.fecha }}</td>
+        <td >{{ cfdi.total }}</td>
+
+        <td height="1" align="center">
+        <button type="button" name="button" class="btn btn-primary" (click)="downloadXml(cfdi.id)">XML</button>
+      </td>
+      <td height="1" align="center">
+      <button type="button" name="button" class="btn btn-primary" (click)="downloadPdf(cfdi.id)">PDF</button>
+    </td>
+      </tr>
+
+    </tbody>
+    <tbody *ngIf="dataCfdi?.length == 0">
+      <tr>
+        <td colspan="3" class="no-data-available">No data!</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+                    </div>
+                    <!--end::contenido-->
+                    </div>
+                    <!--end::col-xl-4-->
+                  </div>
+                <!--end::Dashboard-->
+                </div>
+                <!--end::Container-->
+              </div>
+              <!--end::Entry-->
+      </div>
+      <!--end::Content-->
+        <!--begin::footer-->
+        <app-footer></app-footer>
+        <!--end::footer-->
+          </div>
+          <!--end::Wrapper-->
+      </div>
+			<!--end::Page-->
+</div>
+<!--end::Main-->
